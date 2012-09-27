@@ -1,0 +1,4 @@
+emptyopencart
+=============
+
+opencart empty project
