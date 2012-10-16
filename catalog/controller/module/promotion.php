@@ -1,6 +1,19 @@
-<?php  
-class ControllerModulePromotion extends Controller {
-	protected function index($setting) {
+<?php
+/**
+ * ControllerModulePromotion
+ *
+ * @copyright  2012 Stfalcon (http://stfalcon.com/)
+ */
+class ControllerModulePromotion extends Controller
+{
+
+    /**
+     * render promotions banner
+     *
+     * @param $setting module settings
+     */
+    protected function index($setting)
+    {
 		static $module = 0;
 		
 		$this->load->model('module/promotion');
@@ -35,6 +48,9 @@ class ControllerModulePromotion extends Controller {
 		$this->render();
 	}
 
+    /**
+     * show promotion show
+     */
     public function show() {
         $this->load->language('module/promotion');
 
@@ -145,7 +161,11 @@ class ControllerModulePromotion extends Controller {
         }
     }
 
-
+    /**
+     * render promotion error page
+     *
+     * @param int $promotionId errored promotion id
+     */
     protected function renderErrorPage($promotionId = 0) {
         $this->load->language('module/promotion');
 

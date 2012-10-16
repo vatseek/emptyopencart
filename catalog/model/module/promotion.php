@@ -1,7 +1,17 @@
 <?php
+/**
+ * ModelModulePromotion
+ *
+ * @copyright  2012 Stfalcon (http://stfalcon.com/)
+ */
 class ModelModulePromotion extends Model {
 
-	public function getPromotions() {
+    /**
+     * returned all promotions
+     *
+     * @return array promotions data list
+     */
+    public function getPromotions() {
         $currentLanguageId = (int)$this->config->get('config_language_id');
 
 		$query = "SELECT _p.promotion_id, _pd.description, _pd.meta_description, _pd.image  FROM `" . DB_PREFIX . "promotion` AS _p ";
@@ -20,6 +30,12 @@ class ModelModulePromotion extends Model {
 		return $promotionsList;
 	}
 
+    /**
+     * return promotion by ID
+     *
+     * @param int $promotionId ID of promotion
+     * @return mixed
+     */
     public function getPromotion($promotionId) {
         $currentLanguageId = (int)$this->config->get('config_language_id');
         $promotionId += 0;
@@ -33,6 +49,12 @@ class ModelModulePromotion extends Model {
         return $result->row;
     }
 
+    /**
+     * get all products of promotion
+     *
+     * @param int $promotionId
+     * @return array products data list
+     */
     public function getProductsOfPromotion( $promotionId )
     {
         $currentLanguageId = (int)$this->config->get('config_language_id');
@@ -56,6 +78,11 @@ class ModelModulePromotion extends Model {
         return $result->rows;
     }
 
+    /**
+     * return promotion banner settings such as height, width etc.. false is banner not set
+     *
+     * @return array|bool promotion banner settings
+     */
     public function getPromotionSettings() {
         $this->load->model('setting/setting');
         $promotion = $this->model_setting_setting->getSetting('promotion');

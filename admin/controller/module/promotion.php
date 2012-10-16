@@ -2,17 +2,26 @@
 /**
  * ControllerModulePromotion
  *
- * Manage promotions
+ * Manage promotions in backoffice
  */
 class ControllerModulePromotion extends Controller {
-	private $error = array();
+    /**
+     * @var array errors container
+     */
+    private $error = array();
 
+    /**
+     * @var array breadcrumbs list to index page
+     */
     private $indexBreadcrumbs = array (
         'text_home' => 'common/home',
         'text_module' => 'extension/module',
         'heading_title' => 'module/promotion',
     );
 
+    /**
+     * @var array breadcrumbs list to slideshow page
+     */
     private $slideshowBreadcrumbs = array (
         'text_home' => 'common/home',
         'text_module' => 'extension/module',
@@ -20,6 +29,10 @@ class ControllerModulePromotion extends Controller {
         'heading_slideshow' => 'module/promotion/slideshow',
     );
 
+    /**
+     * @param $breadcrumbsList list of breadcrumbs
+     * @return array processed array with links, names, etc..
+     */
     protected function createBreadcrumbsArray( $breadcrumbsList )
     {
         $result = array();
@@ -41,8 +54,11 @@ class ControllerModulePromotion extends Controller {
 
         return $result;
     }
-	
-	public function index()
+
+    /**
+     * index page controller
+     */
+    public function index()
     {
 		$this->load->language('module/promotion');
 
@@ -59,7 +75,6 @@ class ControllerModulePromotion extends Controller {
 		}
 				
 		$this->data['heading_title'] = $this->language->get('heading_title');
-
 		$this->data['text_enabled'] = $this->language->get('text_enabled');
 		$this->data['text_disabled'] = $this->language->get('text_disabled');
 		$this->data['text_content_top'] = $this->language->get('text_content_top');
@@ -128,6 +143,9 @@ class ControllerModulePromotion extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
+    /**
+     * delete controller page
+     */
     public function delete()
     {
         if (!$this->validate()) {
@@ -150,8 +168,12 @@ class ControllerModulePromotion extends Controller {
         }
     }
 
-	
-	private function validate() {
+    /**
+     * validate of user permissions
+     *
+     * @return bool is_valid
+     */
+    private function validate() {
 		if (!$this->user->hasPermission('modify', 'module/promotion')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
@@ -163,6 +185,10 @@ class ControllerModulePromotion extends Controller {
 		}	
 	}
 
+    /**
+     * @param string $image image name
+     * @return string image link
+     */
     protected function setImageLink($image)
     {
         if ($image) {
@@ -174,6 +200,9 @@ class ControllerModulePromotion extends Controller {
         }
     }
 
+    /**
+     * save promotion page
+     */
     public function save()
     {
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
@@ -189,6 +218,9 @@ class ControllerModulePromotion extends Controller {
         }
     }
 
+    /**
+     * update promotion page
+     */
     public function update()
     {
         $this->load->language('module/promotion');
@@ -293,7 +325,9 @@ class ControllerModulePromotion extends Controller {
 
     }
 
-
+    /**
+     * edit slideshow page
+     */
     public function slideshow() {
         $this->load->language('module/promotion');
 

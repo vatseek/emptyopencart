@@ -6,6 +6,12 @@
  */
 class ModelModulePromotion extends Model {
 
+    /**
+     * Save promotion data to DB
+     *
+     * @param array $promotionData
+     * @return bool is_success
+     */
     public function savePromotion($promotionData)
     {
         if ( isset($promotionData['promotion_id']) && isset($promotionData['title']) && isset($promotionData['status']) && isset($promotionData['picture']) && isset($promotionData['order']) && isset($promotionData['position'])) {
@@ -43,6 +49,13 @@ class ModelModulePromotion extends Model {
         }
     }
 
+    /**
+     * Save promotion descriptions
+     *
+     * @param array $promotionDescriptionData
+     * @param int $promotionId
+     * @return bool is_success
+     */
     public function savePromotionDescription($promotionDescriptionData, $promotionId)
     {
         $query = "DELETE FROM `" . DB_PREFIX . "promotion_description` WHERE promotion_id = '{$promotionId}'";
@@ -75,6 +88,9 @@ class ModelModulePromotion extends Model {
         return false;
     }
 
+    /**
+     * @param array $promotionsList list of promotions IDs to deleted
+     */
     public function deletePromotions($promotionsList)
     {
         $subQuery = '(' . implode ($promotionsList, ',') . ')';
@@ -86,6 +102,12 @@ class ModelModulePromotion extends Model {
         $this->db->query($query);
     }
 
+    /**
+     * get promotions list
+     *
+     * @param bool $activeOnly (true is select only active promotions)
+     * @return array promotions data
+     */
     public function getPromotions($activeOnly = false)
     {
         $query = "SELECT * FROM `" . DB_PREFIX . "promotion` AS _p";
@@ -97,6 +119,10 @@ class ModelModulePromotion extends Model {
         return $result->rows;
     }
 
+    /**
+     * @param int $promotionId ID of promotion
+     * @return array Promotion data
+     */
     public function getPromotionById($promotionId)
     {
         $query = "SELECT * FROM `" . DB_PREFIX . "promotion` AS _p WHERE promotion_id='{$promotionId}'";
@@ -105,6 +131,10 @@ class ModelModulePromotion extends Model {
         return $result->row;
     }
 
+    /**
+     * @param int $promotionId
+     * @return array Promotion description data
+     */
     public function getPromotionDescriptions($promotionId)
     {
         $promotionSortedDescription = array();
@@ -118,6 +148,10 @@ class ModelModulePromotion extends Model {
         return $promotionSortedDescription;
     }
 
+    /**
+     * @param string $tableName table name
+     * @return array fields list
+     */
     public function getTableDBFields($tableName)
     {
         $fieldNames = array();
@@ -131,6 +165,9 @@ class ModelModulePromotion extends Model {
         return $fieldNames;
     }
 
+    /**
+     * installing of tables on module install
+     */
     public function install()
     {
         $query = "CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "promotion` (
@@ -174,12 +211,17 @@ class ModelModulePromotion extends Model {
             $this->db->query($query);
         }
 
+        //rename file to enabled for vqmod
         $path = str_replace('system/config','vqmod/xml',DIR_CONFIG);
         rename($path . 'promotion.bak',$path . 'promotion.xml');
     }
 
+    /**
+     * uninstall module operations
+     */
     public function uninstall()
     {
+        //rename file to disables for vqmod
         $path = str_replace('system/config','vqmod/xml',DIR_CONFIG);
         rename($path . 'promotion.xml',$path . 'promotion.bak');
     }
