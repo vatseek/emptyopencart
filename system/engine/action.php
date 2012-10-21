@@ -12,7 +12,6 @@ final class Action {
 		
 		foreach ($parts as $part) { 
 			$path .= $part;
-			
 			if (is_dir(DIR_APPLICATION . 'controller/' . $path)) {
 				$path .= '/';
 				
@@ -20,6 +19,16 @@ final class Action {
 				
 				continue;
 			}
+
+            if (is_file(DIR_APPLICATION . 'controller/extends/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php')) {
+                $this->file = DIR_APPLICATION . 'controller/extends/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php';
+
+                $this->class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', $path . 'extends');
+
+                array_shift($parts);
+
+                break;
+            }
 			
 			if (is_file(DIR_APPLICATION . 'controller/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php')) {
 				$this->file = DIR_APPLICATION . 'controller/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php';

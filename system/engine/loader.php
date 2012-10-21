@@ -39,7 +39,15 @@ final class Loader {
 	public function model($model) {
 		$file  = DIR_APPLICATION . 'model/' . $model . '.php';
 		$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $model);
-		
+
+        $extendFile = DIR_APPLICATION . 'model/extends/' . $model . '.php';
+        $extendClass = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $model . 'extends');
+        if (file_exists($extendFile)) {
+            include_once($extendFile);
+            $this->registry->set('model_' . str_replace('/', '_', $model), new $extendClass($this->registry));
+            return;
+        }
+
 		if (file_exists($file)) {
 			include_once($file);
 			
