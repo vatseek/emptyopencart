@@ -1,14 +1,16 @@
 <?php
 // Heading
-$_['heading_title']      = 'LIQPAY';
+$_['heading_title']      = 'Счет-фактура';
 
-// Text 
+// Text
 $_['text_payment']       = 'Оплата';
-$_['text_success']       = 'Настройки модуля обновлены!';   
-$_['text_pay']           = 'LIQPAY';
+$_['text_success']       = 'Настройки модуля обновлены!';
+$_['text_pay']           = 'Счет-фактура';
 $_['text_card']          = 'Credit Card';
 
+
 // Entry
+$_['entry_content']      = 'Заголовок счета:<br /><span class="help">Каждая стока в документе разделяется символом "|" </span>';
 $_['entry_merchant']     = 'Merchant ID:';
 $_['entry_signature']    = 'Signature:';
 $_['entry_type']         = 'Type:';

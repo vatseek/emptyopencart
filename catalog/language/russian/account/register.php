@@ -28,6 +28,7 @@ $_['entry_zone']           = 'Регион / Область:';
 $_['entry_newsletter']     = 'Подписаться:';
 $_['entry_password']       = 'Пароль:';
 $_['entry_confirm']        = 'Повтор пароля:';
+$_['entry_company_id'] 	   = 'Название компании';
 
 // Error
 $_['error_exists']         = 'Этот E-Mail уже зарегистрирован!';

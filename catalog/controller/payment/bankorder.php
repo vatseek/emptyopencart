@@ -1,5 +1,5 @@
 <?php
-class ControllerPaymentLiqPay extends Controller {
+class ControllerPaymentBankorder extends Controller {
 	protected function index() {
 		$this->data['button_confirm'] = $this->language->get('button_confirm');
 		
