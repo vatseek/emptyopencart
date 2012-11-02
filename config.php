@@ -33,6 +33,6 @@ define('DB_DRIVER', 'mysql');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'user');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'opencart');
+define('DB_DATABASE', 'lovlya_co');
 define('DB_PREFIX', '');
 ?>
