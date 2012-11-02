@@ -63,34 +63,49 @@ class ControllerPaymentBankorder extends Controller {
 		
 		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 
-	    $this->data['liqpay_merchant'] = '1';
-		$this->data['liqpay_total'] = '1';
-		$this->data['liqpay_order_status_id'] = '1';
+
+        if (isset($this->request->post['bankorder_order_content'])) {
+	        $this->data['bankorder_order_content'] = $this->request->post['bankorder_order_content'];
+        } else {
+            $this->data['bankorder_order_content'] = $this->config->get('bankorder_order_content');
+        }
+
+        if (isset($this->request->post['bankorder_total'])) {
+            $this->data['bankorder_total'] = $this->request->post['bankorder_total'];
+        } else {
+            $this->data['bankorder_total'] = $this->config->get('bankorder_total');
+        }
+
+        if (isset($this->request->post['bankorder_total'])) {
+            $this->data['bankorder_order_status_id'] = $this->request->post['bankorder_order_status_id'];
+        } else {
+            $this->data['bankorder_order_status_id'] = $this->config->get('bankorder_order_status_id');
+        }
 
 		$this->load->model('localisation/order_status');
 		
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 		
 		if (isset($this->request->post['liqpay_geo_zone_id'])) {
-			$this->data['liqpay_geo_zone_id'] = $this->request->post['liqpay_geo_zone_id'];
+			$this->data['bankorder_geo_zone_id'] = $this->request->post['bankorder_geo_zone_id'];
 		} else {
-			$this->data['liqpay_geo_zone_id'] = $this->config->get('liqpay_geo_zone_id'); 
+			$this->data['bankorder_geo_zone_id'] = $this->config->get('bankorder_geo_zone_id');
 		} 		
 		
 		$this->load->model('localisation/geo_zone');
 										
 		$this->data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 		
-		if (isset($this->request->post['liqpay_status'])) {
-			$this->data['liqpay_status'] = $this->request->post['liqpay_status'];
+		if (isset($this->request->post['bankorder_status'])) {
+			$this->data['bankorder_status'] = $this->request->post['bankorder_status'];
 		} else {
-			$this->data['liqpay_status'] = $this->config->get('liqpay_status');
+			$this->data['bankorder_status'] = $this->config->get('bankorder_status');
 		}
 		
 		if (isset($this->request->post['liqpay_sort_order'])) {
-			$this->data['liqpay_sort_order'] = $this->request->post['liqpay_sort_order'];
+			$this->data['bankorder_sort_order'] = $this->request->post['bankorder_sort_order'];
 		} else {
-			$this->data['liqpay_sort_order'] = $this->config->get('liqpay_sort_order');
+			$this->data['bankorder_sort_order'] = $this->config->get('bankorder_sort_order');
 		}
 
 		$this->template = 'payment/bankorder.tpl';
@@ -103,16 +118,8 @@ class ControllerPaymentBankorder extends Controller {
 	}
 
 	private function validate() {
-		if (!$this->user->hasPermission('modify', 'payment/liqpay')) {
+		if (!$this->user->hasPermission('modify', 'payment/bankorder')) {
 			$this->error['warning'] = $this->language->get('error_permission');
-		}
-
-		if (!$this->request->post['liqpay_merchant']) {
-			$this->error['merchant'] = $this->language->get('error_merchant');
-		}
-
-		if (!$this->request->post['liqpay_signature']) {
-			$this->error['signature'] = $this->language->get('error_signature');
 		}
 		
 		if (!$this->error) {

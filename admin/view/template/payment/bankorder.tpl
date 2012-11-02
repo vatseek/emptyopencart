@@ -18,21 +18,19 @@
         <table class="form">
           <tr>
             <td><?php echo $entry_total; ?></td>
-            <td><input type="text" name="liqpay_total" value="<?php echo $liqpay_total; ?>" /></td>
+            <td><input type="text" name="bankorder_total" value="<?php echo $bankorder_total; ?>" /></td>
           </tr>
             <tr>
                 <td><?php echo $entry_content; ?></td>
                 <td>
-                    <textarea name="order_content" style="width: 400px; height:100px; ">
-<?php echo $liqpay_total; ?>
-                    </textarea>
+                    <textarea name="bankorder_order_content" style="width: 400px; height:100px; "><?php echo $bankorder_order_content; ?></textarea>
                 </td>
             </tr>
           <tr>
             <td><?php echo $entry_order_status; ?></td>
-            <td><select name="liqpay_order_status_id">
+            <td><select name="bankorder_order_status_id">
                 <?php foreach ($order_statuses as $order_status) { ?>
-                <?php if ($order_status['order_status_id'] == $liqpay_order_status_id) { ?>
+                <?php if ($order_status['order_status_id'] == $bankorder_order_status_id) { ?>
                 <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
                 <?php } else { ?>
                 <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
@@ -42,8 +40,8 @@
           </tr>
           <tr>
             <td><?php echo $entry_status; ?></td>
-            <td><select name="liqpay_status">
-                <?php if ($liqpay_status) { ?>
+            <td><select name="bankorder_status">
+                <?php if ($bankorder_status) { ?>
                 <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
                 <option value="0"><?php echo $text_disabled; ?></option>
                 <?php } else { ?>
@@ -54,7 +52,7 @@
           </tr>
           <tr>
             <td><?php echo $entry_sort_order; ?></td>
-            <td><input type="text" name="liqpay_sort_order" value="<?php echo $liqpay_sort_order; ?>" size="1" /></td>
+            <td><input type="text" name="bankorder_sort_order" value="<?php echo $bankorder_sort_order; ?>" size="1" /></td>
           </tr>
         </table>
       </form>
