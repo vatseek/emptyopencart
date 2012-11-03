@@ -25,6 +25,7 @@
 <?php if ($text_agree) { ?>
 <div class="buttons">
   <div class="right"><?php echo $text_agree; ?>
+     <?php $agree = true; ?>
     <?php if ($agree) { ?>
     <input type="checkbox" name="agree" value="1" checked="checked" />
     <?php } else { ?>

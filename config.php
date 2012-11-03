@@ -17,6 +17,7 @@ define('HTTPS_SERVER', 'https://'.$baseUrl.'/');
 define('HTTPS_IMAGE', 'https://'.$baseUrl.'/image/');
 
 // DIR
+define('DIR_BASE', $basePath . '/');
 define('DIR_APPLICATION', $basePath . '/catalog/');
 define('DIR_SYSTEM', $basePath . '/system/');
 define('DIR_DATABASE', $basePath . '/system/database/');
