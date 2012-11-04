@@ -20,6 +20,22 @@ class ModelCatalogInformation extends Model {
 		} else {
 			return $this->config->get('config_layout_information');
 		}
-	}	
+	}
+
+    public function getMenuInformations()
+    {
+        $query = "SELECT * FROM " . DB_PREFIX . "information AS _i
+            LEFT JOIN " . DB_PREFIX . "information_description AS _id ON (_i.information_id = _id.information_id)
+            LEFT JOIN " . DB_PREFIX . "information_to_store _i2s ON (_i.information_id = _i2s.information_id)
+            WHERE _id.language_id = '" . (int)$this->config->get('config_language_id') . "'
+                AND _i2s.store_id = '" . (int)$this->config->get('config_store_id') . "'
+                AND _i.status = '1'
+                AND _i.menu = '1'
+            ORDER BY _i.sort_order, LCASE(_id.title) ASC";
+
+        $result = $this->db->query($query);
+
+        return $result->rows;
+    }
 }
 ?>

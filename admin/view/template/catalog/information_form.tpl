@@ -83,7 +83,15 @@
                 <?php } else { ?>
                 <input type="checkbox" name="bottom" value="1" />
                 <?php } ?></td>
-            </tr>            
+            </tr>
+              <tr>
+                  <td><?php echo $entry_menu; ?></td>
+                  <td><?php if ($menu) { ?>
+                      <input type="checkbox" name="menu" value="1" checked="checked" />
+                      <?php } else { ?>
+                      <input type="checkbox" name="menu" value="1" />
+                      <?php } ?></td>
+              </tr>
             <tr>
               <td><?php echo $entry_status; ?></td>
               <td><select name="status">

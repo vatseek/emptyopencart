@@ -273,6 +273,9 @@ class ControllerCatalogInformation extends Controller {
 		$this->data['entry_store'] = $this->language->get('entry_store');
 		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
 		$this->data['entry_bottom'] = $this->language->get('entry_bottom');
+
+        $this->data['entry_menu'] = $this->language->get('entry_menu');
+
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_layout'] = $this->language->get('entry_layout');
@@ -383,6 +386,14 @@ class ControllerCatalogInformation extends Controller {
 		} else {
 			$this->data['bottom'] = 0;
 		}
+
+        if (isset($this->request->post['menu'])) {
+            $this->data['menu'] = $this->request->post['menu'];
+        } elseif (!empty($information_info)) {
+            $this->data['menu'] = $information_info['menu'];
+        } else {
+            $this->data['menu'] = 0;
+        }
 		
 		if (isset($this->request->post['status'])) {
 			$this->data['status'] = $this->request->post['status'];

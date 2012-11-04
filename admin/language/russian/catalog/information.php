@@ -19,6 +19,8 @@ $_['entry_keyword']         = 'SEO URL:<br/><span class="help">Должно бы
 $_['entry_status']          = 'Статус:';
 $_['entry_sort_order']  	= 'Порядок сортировки:<br/><span class="help">-1 для скрытия</span>';
 $_['entry_layout']      	= 'Выберите схему:';
+$_['entry_bottom']      	= 'В подвале сайта:';
+$_['entry_menu']        	= 'В меню:';
 
 // Error
 $_['error_warning']         = 'Внимательно проверьте форму на ошибки!';
