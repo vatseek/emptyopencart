@@ -1,5 +1,6 @@
 <div id="cart">
   <div class="heading">
+      <a href="<?php echo $cart; ?>"><div class="button-cart"></div></a>
     <h4><?php echo $heading_title; ?></h4>
     <a><span id="cart-total"><?php echo $text_items; ?></span></a></div>
   <div class="content">

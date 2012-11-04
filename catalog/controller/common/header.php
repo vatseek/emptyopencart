@@ -109,7 +109,7 @@ class ControllerCommonHeader extends Controller {
                 'name'     => $category['title'],
                 'children' => array(),
                 'column'   =>  1,
-                'href'     => $this->url->link('product/informationy', 'path=' . $category['information_id'])
+                'href'     => $this->url->link('information/information', 'information_id=' . $category['information_id'])
             );
 		}
 		
