@@ -1631,3 +1631,26 @@ a.button:hover, input.button:hover {
 .banner div img {
 	margin-bottom: 20px;
 }
+
+.categorylist li {
+    list-style:  none;
+}
+
+.categorylist-href {
+    display: block;
+    width: 160px;
+    height: 160px;
+    float: left;
+}
+
+.categorylist-block {
+    position: relative;
+}
+
+.categorylist-title {
+    position: absolute;
+}
+
+.categorylist-image {
+    padding-top: 16px;
+}
