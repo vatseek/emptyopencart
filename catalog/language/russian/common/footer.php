@@ -14,5 +14,5 @@ $_['text_account']      = 'Личный Кабинет';
 $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Заметки';
 $_['text_newsletter']   = 'Подписка';
-$_['text_powered'] 		= 'Работает на <a href="http://www.opencart.com">OpenCart</a><br /> %s &copy; %s';
+$_['text_powered'] 		= 'Designed by <a href="http://www.vatseek.km.ua">VatSeek</a><br /> %s &copy; %s';
 ?>
