@@ -72,7 +72,7 @@ class ControllerToolExport extends Controller {
 		if ($this->validate()) {
 
 			// set appropriate timeout limit
-			set_time_limit( 1800 );
+			//set_time_limit( 1800 );
 
 			// send the categories, products and options as a spreadsheet file
 			$this->load->model('tool/export');

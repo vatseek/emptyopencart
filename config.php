@@ -32,8 +32,8 @@ define('DIR_LOGS', $basePath . '/system/logs/');
 // DB
 define('DB_DRIVER', 'mysql');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'user');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'lovlya_co');
+define('DB_USERNAME', 'lovlyacomu');
+define('DB_PASSWORD', 'hXhc9SsS');
+define('DB_DATABASE', 'lovlyacomu_main');
 define('DB_PREFIX', '');
 ?>
