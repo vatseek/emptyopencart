@@ -1,7 +1,5 @@
 <div id="cart">
   <div class="heading">
-      <a href="<?php echo $cart; ?>"><div class="button-cart"></div></a>
-    <h4><?php echo $heading_title; ?></h4>
     <a><span id="cart-total"><?php echo $text_items; ?></span></a></div>
   <div class="content">
     <?php if ($products || $vouchers) { ?>
@@ -13,23 +11,17 @@
             <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
             <?php } ?></td>
           <td class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
-            <div>
+            <div class="cart-product-name">
               <?php foreach ($product['option'] as $option) { ?>
               - <small><?php echo $option['name']; ?> <?php echo $option['value']; ?></small><br />
               <?php } ?>
-            </div></td>
-          <td class="quantity">x&nbsp;<?php echo $product['quantity']; ?></td>
-          <td class="total"><?php echo $product['total']; ?></td>
-          <td class="remove"><img src="catalog/view/theme/default/image/remove-small.png" alt="<?php echo $button_remove; ?>" title="<?php echo $button_remove; ?>" onclick="(getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') ? location = 'index.php?route=checkout/cart&remove=<?php echo $product['key']; ?>' : $('#cart').load('index.php?route=module/cart&remove=<?php echo $product['key']; ?>' + ' #cart > *');" /></td>
-        </tr>
-        <?php } ?>
-        <?php foreach ($vouchers as $voucher) { ?>
-        <tr>
-          <td class="image"></td>
-          <td class="name"><?php echo $voucher['description']; ?></td>
-          <td class="quantity">x&nbsp;1</td>
-          <td class="total"><?php echo $voucher['amount']; ?></td>
-          <td class="remove"><img src="catalog/view/theme/default/image/remove-small.png" alt="<?php echo $button_remove; ?>" title="<?php echo $button_remove; ?>" onclick="(getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') ? location = 'index.php?route=checkout/cart&remove=<?php echo $voucher['key']; ?>' : $('#cart').load('index.php?route=module/cart&remove=<?php echo $voucher['key']; ?>' + ' #cart > *');" /></td>
+            </div>
+            <div class="cart-count">Шт: <span>x&nbsp;<?php echo $product['quantity']; ?></span></div>
+            <div class="cart-price">Цена:<span><?php echo $product['total']; ?></span></div>
+          </td>
+          <td>
+            <div class="cart-remove"><img src="catalog/view/theme/default/image/remove-small.png" alt="<?php echo $button_remove; ?>" title="<?php echo $button_remove; ?>" onclick="(getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') ? location = 'index.php?route=checkout/cart&remove=<?php echo $product['key']; ?>' : $('#cart').load('index.php?route=module/cart&remove=<?php echo $product['key']; ?>' + ' #cart > *');" /></div>
+          </td>
         </tr>
         <?php } ?>
       </table>

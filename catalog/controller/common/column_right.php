@@ -75,6 +75,10 @@ class ControllerCommonColumnRight extends Controller {
 				$this->data['modules'][] = $module;
 			}
 		}
+
+        $this->children = array(
+            'module/cart'
+        );
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/column_right.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/column_right.tpl';

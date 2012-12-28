@@ -51,7 +51,6 @@ DD_belatedPNG.fix('#logo img');
   <?php } ?>
   <?php echo $language; ?>
   <?php echo $currency; ?>
-  <?php echo $cart; ?>
   <div id="search">
     <div class="button-search"></div>
     <?php if ($filter_name) { ?>

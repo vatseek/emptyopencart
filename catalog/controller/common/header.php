@@ -116,7 +116,6 @@ class ControllerCommonHeader extends Controller {
 		$this->children = array(
 			'module/language',
 			'module/currency',
-			'module/cart'
 		);
 				
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {

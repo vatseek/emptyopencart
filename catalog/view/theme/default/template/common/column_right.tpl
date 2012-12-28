@@ -36,6 +36,12 @@
             </table>
         </div>
     </div>
+    <div class="box">
+        <div class="box-heading special">Корзина</div>
+        <div class="box-content">
+            <?php echo $cart; ?>
+        </div>
+    </div>
   <?php foreach ($modules as $module) { ?>
   <?php echo $module; ?>
   <?php } ?>
