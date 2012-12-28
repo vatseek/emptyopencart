@@ -1,0 +1,32 @@
+<?php
+// HTTP
+define('HTTP_SERVER', 'http://lovlya.com.ua/admin/');
+define('HTTP_CATALOG', 'http://lovlya.com.ua/');
+define('HTTP_IMAGE', 'http://lovlya.com.ua/image/');
+
+// HTTPS
+define('HTTPS_SERVER', 'http://lovlya.com.ua/admin/');
+define('HTTPS_CATALOG', 'http://lovlya.com.ua/');
+define('HTTPS_IMAGE', 'http://lovlya.com.ua/image/');
+
+// DIR
+define('DIR_APPLICATION', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/admin/');
+define('DIR_SYSTEM', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/system/');
+define('DIR_DATABASE', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/system/database/');
+define('DIR_LANGUAGE', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/admin/language/');
+define('DIR_TEMPLATE', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/admin/view/template/');
+define('DIR_CONFIG', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/system/config/');
+define('DIR_IMAGE', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/image/');
+define('DIR_CACHE', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/system/cache/');
+define('DIR_DOWNLOAD', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/download/');
+define('DIR_LOGS', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/system/logs/');
+define('DIR_CATALOG', '/usr/home/lovlyacomu/domains/lovlya.com.ua/public_html/catalog/');
+
+// DB
+define('DB_DRIVER', 'mysql');
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'lovlyacomu');
+define('DB_PASSWORD', 'hXhc9SsS');
+define('DB_DATABASE', 'lovlyacomu_main');
+define('DB_PREFIX', '');
+?>
