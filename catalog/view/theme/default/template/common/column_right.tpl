@@ -4,34 +4,37 @@
         <div class="box-content">
             <table>
                 <tr>
-                    <td colspan="2" style="font-weight: bold;">Консультант по лескам:</td>
+                    <td colspan="2" style="font-weight: bold;">Информационная служба:</td>
                 </tr>
                 <tr>
                     <td><span class="phone"></span></td>
-                    <td>+38 097 72 61 234</td>
+                    <td>+38 097 63 36 100</td>
                 </tr>
                 <tr>
                     <td><span class="skype"></span></td>
-                    <td>test_consult</td>
+                    <td>lovlya.poper</td>
                 </tr>
                 <tr>
-                    <td><span class="icq"></span></td>
-                    <td>566 554 864</td>
+                    <td colspan="2" class="contact-header">Консультант по приманкам:</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Максим</td>
+                </tr>
+                <tr>
+                    <td><span class="phone"></span></td>
+                    <td>+38 097 44 40 280</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="contact-header">Консультант по спинингам:</td>
                 </tr>
                 <tr>
+                    <td></td>
+                    <td>Роман</td>
+                </tr>
+                <tr>
                     <td><span class="phone"></span></td>
-                    <td>+38 097 726 12 34</td>
-                </tr>
-                <tr>
-                    <td><span class="skype"></span></td>
-                    <td>+test_consult2</td>
-                </tr>
-                <tr>
-                    <td><span class="icq"></span></td>
-                    <td>566 554 864</td>
+                    <td>+38 097 88 32 635</td>
                 </tr>
             </table>
         </div>
@@ -42,7 +45,7 @@
             <?php echo $cart; ?>
         </div>
     </div>
-  <?php foreach ($modules as $module) { ?>
-  <?php echo $module; ?>
-  <?php } ?>
+    <?php foreach ($modules as $module) { ?>
+    <?php echo $module; ?>
+    <?php } ?>
 </div>
