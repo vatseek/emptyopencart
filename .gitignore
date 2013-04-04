@@ -1,7 +1,5 @@
-.gitignore
-.idea
+    .idea
 image/cache/*
-image/data/*
 system/cache/*
 system/logs/*
 vqmod/vqcache/*
