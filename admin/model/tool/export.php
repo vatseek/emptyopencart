@@ -1602,6 +1602,9 @@ class ModelToolExport extends Model {
 
 
 	function upload( $filename ) {
+        ini_set ('upload_max_filesize', '100M');
+        ini_set ('post_max_size', '10M');
+
 		// we use our own error handler
 		global $config;
 		global $log;
@@ -1613,8 +1616,8 @@ class ModelToolExport extends Model {
 		$database =& $this->db;
 
 		// use a generous enough configuration, the Import can be quite memory hungry (this needs to be improved)
-		// ini_set("memory_limit","512M");
-		// ini_set("max_execution_time",180);
+		ini_set("memory_limit","768M");
+		ini_set("max_execution_time",180);
 		//set_time_limit( 60 );
 
 		// we use the PHPExcel package from http://phpexcel.codeplex.com/

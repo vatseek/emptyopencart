@@ -1,7 +1,27 @@
 <?php 
 class ControllerCatalogProduct extends Controller {
-	private $error = array(); 
-     
+	private $error = array();
+
+    public function google() {
+        $this->load->language('catalog/product');
+
+        $this->load->model('catalog/product');
+
+        $search = trim($this->request->get['search']);
+
+        $this->data['images'] = $this->model_catalog_product->getGooglePictures(htmlspecialchars($search));
+        $this->data['search'] = $search;
+        $this->data['token'] = $this->session->data['token'];
+
+        $this->template = 'catalog/google_image_list.tpl';
+        $this->children = array(
+            'common/header',
+            'common/footer'
+        );
+
+        $this->response->setOutput($this->render());
+    }
+
   	public function index() {
 		$this->load->language('catalog/product');
     	
@@ -1165,6 +1185,8 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('design/layout');
 		
 		$this->data['layouts'] = $this->model_design_layout->getLayouts();
+
+        $this->data['window_link'] = $this->url->link('catalog/product/google', 'token=' . $this->session->data['token'], 'SSL');
 										
 		$this->template = 'catalog/product_form.tpl';
 		$this->children = array(

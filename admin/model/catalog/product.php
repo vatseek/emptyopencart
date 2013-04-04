@@ -109,7 +109,27 @@ class ModelCatalogProduct extends Model {
 		$this->cache->delete('product');
 	}
 	
-	public function editProduct($product_id, $data) {
+	public function editProduct($product_id, $data)
+    {
+        if (isset($data['image-find'])) {
+            preg_match_all('/.*\.([A-Za-z]{2,5})$/Ui', $data['image-find'], $matches);
+            $extension = 'jpg';
+
+            if (isset($matches[1])) {
+                $extension = $matches[1][0];
+            }
+
+            $filePathName = DIR_CACHE . 'image.' . $extension;
+            if (file_put_contents($filePathName, file_get_contents($data['image-find']))) {
+                $filename = md5_file($filePathName);
+                $copyFilePath = 'data/' . $filename . '.' . $extension;
+
+                if (copy($filePathName, DIR_IMAGE . $copyFilePath)) {
+                    $data['image'] = $copyFilePath;
+                }
+            }
+        }
+
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET model = '" . $this->db->escape($data['model']) . "', sku = '" . $this->db->escape($data['sku']) . "', upc = '" . $this->db->escape($data['upc']) . "', ean = '" . $this->db->escape($data['ean']) . "', jan = '" . $this->db->escape($data['jan']) . "', isbn = '" . $this->db->escape($data['isbn']) . "', mpn = '" . $this->db->escape($data['mpn']) . "', location = '" . $this->db->escape($data['location']) . "', quantity = '" . (int)$data['quantity'] . "', minimum = '" . (int)$data['minimum'] . "', subtract = '" . (int)$data['subtract'] . "', stock_status_id = '" . (int)$data['stock_status_id'] . "', date_available = '" . $this->db->escape($data['date_available']) . "', manufacturer_id = '" . (int)$data['manufacturer_id'] . "', shipping = '" . (int)$data['shipping'] . "', price = '" . (float)$data['price'] . "', points = '" . (int)$data['points'] . "', weight = '" . (float)$data['weight'] . "', weight_class_id = '" . (int)$data['weight_class_id'] . "', length = '" . (float)$data['length'] . "', width = '" . (float)$data['width'] . "', height = '" . (float)$data['height'] . "', length_class_id = '" . (int)$data['length_class_id'] . "', status = '" . (int)$data['status'] . "', tax_class_id = '" . $this->db->escape($data['tax_class_id']) . "', sort_order = '" . (int)$data['sort_order'] . "', date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");
 
 		if (isset($data['image'])) {
@@ -703,5 +723,42 @@ class ModelCatalogProduct extends Model {
 
 		return $query->row['total'];
 	}
+
+    public function getGooglePictures($searchPhrase) {
+        $results = array();
+        for ($i = 0; $i < 8; $i++ ) {
+            $results = array_merge($results, $this->getImagesPart($searchPhrase, $i));
+        }
+
+        return $results;
+    }
+
+    protected function getImagesPart($searchPhrase, $page)
+    {
+        $searchPhrase = rawurlencode($searchPhrase);
+
+        $offset = $page * 8;
+        $url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={$searchPhrase}&userip=127.0.0.1&start={$offset}&rsz=8";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_REFERER, '');
+        $body = curl_exec($ch);
+        curl_close($ch);
+
+        try {
+            $data = json_decode($body);
+            $images = array();
+            foreach ($data->responseData->results as $image) {
+                $images[] = $image;
+            }
+
+            return $images;
+        }
+        catch(Exception $e) {
+            echo('error decode');
+            return array();
+        }
+    }
 }
 ?>

@@ -158,9 +158,22 @@
             </tr>
             <tr>
               <td><?php echo $entry_image; ?></td>
-              <td><div class="image"><img src="<?php echo $thumb; ?>" alt="" id="thumb" /><br />
-                  <input type="hidden" name="image" value="<?php echo $image; ?>" id="image" />
-                  <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
+              <td><div class="image" style="float:left;">
+                    <img src="<?php echo $thumb; ?>" alt="" id="thumb" /><br />
+                    <input type="hidden" name="image" value="<?php echo $image; ?>" id="image" />
+                    <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', '');"><?php echo $text_clear; ?></a>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+                <td>Find in google:</td>
+                <td>
+                    <span onclick="findImage(); return false;" style="cursor: pointer;color: #003366;">Search</span>&nbsp;|&nbsp;
+                    <span onclick="reloadImage(); return false;" style="cursor: pointer;color: #003366;">Reload</span>
+                    <input type="image-find" value="" id="image-find" name="image-find" style="width:750px;"/>
+                    <br>
+                    <img src="" id="search-image-prew" width="150">
+                </td>
             </tr>
             <tr>
               <td><?php echo $entry_date_available; ?></td>
@@ -1113,5 +1126,24 @@ $('.time').timepicker({timeFormat: 'h:m'});
 $('#tabs a').tabs(); 
 $('#languages a').tabs(); 
 $('#vtab-option a').tabs();
-//--></script> 
+//--></script>
+<script type="text/javascript">
+    function findImage() {
+        var phrase = jQuery('input[name="product_description[2][name]"]').val();
+        var link = 'index.php?route=catalog/product/google&token=<?php echo $token; ?>&search=' + phrase;
+        window.open(link);
+    }
+
+    function reloadImage() {
+        jQuery('#image-find').change();
+    }
+
+    jQuery('document').ready(function(){
+        jQuery('#image-find').change(function(){
+            var fileUrl = jQuery('#image-find').val();
+            jQuery('#search-image-prew').prop('src', fileUrl);
+        });
+    });
+
+</script>
 <?php echo $footer; ?>
