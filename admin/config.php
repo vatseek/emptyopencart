@@ -1,4 +1,11 @@
 <?php
+$baseUrl = $_SERVER['HTTP_HOST'];
+$basePath = array_reverse(explode('/', __FILE__));
+$basePath = array_merge($basePath, array());
+unset($basePath[0]);
+unset($basePath[1]);
+$basePath = implode(array_reverse($basePath), '/');
+
 // HTTP
 define('HTTP_SERVER', 'http://' . $baseUrl . '/admin/');
 define('HTTP_CATALOG', 'http://' . $baseUrl . '/');
@@ -25,8 +32,8 @@ define('DIR_CATALOG', $basePath . '/catalog/');
 // DB
 define('DB_DRIVER', 'mysql');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'lovlyacomu');
-define('DB_PASSWORD', 'hXhc9SsS');
-define('DB_DATABASE', 'lovlyacomu_main');
+define('DB_USERNAME', 'c17doc');
+define('DB_PASSWORD', 'doc.km.ua');
+define('DB_DATABASE', 'c17doc');
 define('DB_PREFIX', '');
 ?>

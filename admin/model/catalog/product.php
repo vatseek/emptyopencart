@@ -735,7 +735,7 @@ class ModelCatalogProduct extends Model {
 
     protected function getImagesPart($searchPhrase, $page)
     {
-        $searchPhrase = rawurlencode($searchPhrase);
+        $searchPhrase = rawurlencode($searchPhrase);	
 
         $offset = $page * 8;
         $url = "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q={$searchPhrase}&userip=127.0.0.1&start={$offset}&rsz=8";

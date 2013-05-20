@@ -17,7 +17,6 @@ define('HTTPS_SERVER', 'https://'.$baseUrl.'/');
 define('HTTPS_IMAGE', 'https://'.$baseUrl.'/image/');
 
 // DIR
-define('DIR_BASE', $basePath . '/');
 define('DIR_APPLICATION', $basePath . '/catalog/');
 define('DIR_SYSTEM', $basePath . '/system/');
 define('DIR_DATABASE', $basePath . '/system/database/');
@@ -32,8 +31,8 @@ define('DIR_LOGS', $basePath . '/system/logs/');
 // DB
 define('DB_DRIVER', 'mysql');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'lovlyacomu');
-define('DB_PASSWORD', 'hXhc9SsS');
-define('DB_DATABASE', 'lovlyacomu_main');
+define('DB_USERNAME', 'c17doc');
+define('DB_PASSWORD', 'doc.km.ua');
+define('DB_DATABASE', 'c17doc');
 define('DB_PREFIX', '');
 ?>
