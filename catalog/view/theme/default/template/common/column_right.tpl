@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <td><span class="phone"></span></td>
-                    <td>+38 097 44 40 280</td>
+                    <td>+38 096 44 40 280</td>
                 </tr>
                 <tr>
                     <td colspan="2" class="contact-header">Консультант по спинингам:</td>
